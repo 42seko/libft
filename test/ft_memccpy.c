@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seko <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/04 19:40:44 by seko              #+#    #+#             */
+/*   Updated: 2020/11/04 19:42:03 by seko             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void 	*ft_memccpy(void *destination, const void *source, int c, size_t num)
+void	*ft_memccpy(void *destination, const void *source, int c, size_t num)
 {
-	size_t	i;
+	size_t			i;
 	unsigned char	*p_dest;
 	unsigned char	*p_source;
 	unsigned char	letter;

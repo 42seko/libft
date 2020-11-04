@@ -1,88 +1,104 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seko <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/04 20:06:08 by seko              #+#    #+#             */
+/*   Updated: 2020/11/04 20:12:23 by seko             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-int	str_num(char const *s, char c)
+
+int			str_num(char const *s, char c)
 {
-	int i;
-	int strnum;
+	int	i;
+	int	num;
 
 	i = 0;
-	strnum = 0;
-	while (s[i] == c)
-		i++;
+	num = 0;
 	while (s[i])
 	{
 		if (s[i] == c)
 			i++;
 		else
 		{
-			strnum++;
-			while (s[i] != c) // !!
+			num++;
+			while (s[i] && s[i] != c)
 				i++;
 		}
 	}
-	return (strnum);
+	return (num);
 }
-char	**all_free(char **temp, int i) //!!
-{
-	int j;
 
-	j = 0;
-	while (j < i)
+int			check_size(char const *s, char c, int start)
+{
+	int	i;
+	int	temp;
+
+	i = start;
+	while (s[i] == c)
+		i++;
+	temp = i;
+	while (s[i] && s[i] != c)
+		i++;
+	return (i - temp);
+}
+
+char		**all_free(char **temp, int malloc_len)
+{
+	int	i;
+
+	i = 0;
+	while (i < malloc_len)
 	{
-		free((char *)temp[j]);
-		j++;
+		free(temp[i]);
+		i++;
 	}
 	free(temp);
 	return (NULL);
 }
 
-int check_size(char const *s, char c, int start)
+char		*ft_strcpy(char *dest, char const *src, int len)
 {
-	while (s[start] != c && s[start])
-	{
-		start++;
-	}
-	return (start);
-}	
+	int	i;
 
-char	**ft_split(char const *s, char c)
-{
-	int s_i;
-	int i;
-	int size;
-	char **temp;
-
-	s_i = 0;
 	i = 0;
-	size = str_num(s, c);
-	if (!s || !(temp = (char **)malloc(sizeof(char *) * (size + 1))))
-			return (NULL);
-	while (s[s_i])
+	while (i < len - 1)
 	{
-		while (s[s_i] == c && s[s_i])
-			s_i++;
-		size = check_size(s, c, s_i) - s_i;
-		if (!s || !(temp[i] = (char *)malloc(sizeof(char) * (size + 1))))
-			return (all_free(temp, i));
-		ft_strlcpy(temp[i], (char *)s + s_i, size + 1); //!!
+		dest[i] = src[i];
 		i++;
-		s_i++;
 	}
-	temp[i] = NULL;
-	return (temp);
+	dest[i] = '\0';
+	return (dest);
 }
-#include <stdio.h>
-int main(void)
-{
-	char arr[50] = "apple, banana";
-	char c = ',';
-	char **temp;
-	int i;
 
-	temp = ft_split(arr,c);
+char		**ft_split(char const *s, char c)
+{
+	char	**temp;
+	int		wrdnum;
+	int		i;
+	int		t_i;
+
 	i = 0;
-	while (i < 3)
+	t_i = 0;
+	wrdnum = str_num(s, c);
+	if (!s || !(temp = (char **)malloc(sizeof(char *) * (wrdnum + 1))))
+		return (NULL);
+	while (s[i])
 	{
-		printf("%s", temp[i++]);
+		while (s[i] == c)
+			i++;
+		if (!(temp[t_i] =
+					(char *)malloc(sizeof(char) * (check_size(s, c, i) + 1))))
+			return (all_free(temp, wrdnum + 1));
+		temp[t_i] = ft_strcpy(temp[t_i], s + i, check_size(s, c, i) + 1);
+		while (s[i] && s[i] != c)
+			i++;
+		t_i++;
 	}
-	return 0;
+	temp[t_i] = NULL;
+	return (temp);
 }

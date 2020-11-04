@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: seko <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/11/04 20:12:35 by seko              #+#    #+#             */
+/*   Updated: 2020/11/04 20:13:40 by seko             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int	check_len(int n)
+int			check_len(int n)
 {
-	size_t len;
-	
+	size_t	len;
+
 	len = 1;
 	while (n >= 10 || n <= -10)
 	{
@@ -13,11 +25,11 @@ int	check_len(int n)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
-	char *temp;
-	char *zero;
-	size_t len;
+	char	*temp;
+	char	*zero;
+	size_t	len;
 
 	len = check_len(n);
 	zero = "0";
@@ -39,12 +51,4 @@ char	*ft_itoa(int n)
 		len--;
 	}
 	return (temp);
-}
-
-#include <stdio.h>
-
-int main(void)
-{
-	int i = 623;
-	printf("%s", ft_itoa(i));
 }
