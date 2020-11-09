@@ -6,7 +6,7 @@
 /*   By: seko <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:06:08 by seko              #+#    #+#             */
-/*   Updated: 2020/11/04 20:12:23 by seko             ###   ########.fr       */
+/*   Updated: 2020/11/10 00:44:11 by seko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ char		*ft_strcpy(char *dest, char const *src, int len)
 	int	i;
 
 	i = 0;
+	if (src[i] == '\0')
+		return (0);
 	while (i < len - 1)
 	{
 		dest[i] = src[i];

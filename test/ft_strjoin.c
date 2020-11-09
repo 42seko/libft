@@ -6,7 +6,7 @@
 /*   By: seko <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 19:55:19 by seko              #+#    #+#             */
-/*   Updated: 2020/11/04 19:57:29 by seko             ###   ########.fr       */
+/*   Updated: 2020/11/10 00:57:56 by seko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	i = 0;
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	if (s1[i] == '\0')
-		return ((char *)s2);
-	if (s2[i] == '\0')
-		return ((char *)s1);
 	if (!(temp = (char *)malloc(sizeof(char) * (s1_len + s2_len + 1))))
 		return (0);
 	p_p = ft_strcat(s1, s2);

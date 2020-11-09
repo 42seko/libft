@@ -6,7 +6,7 @@
 /*   By: seko <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:15:40 by seko              #+#    #+#             */
-/*   Updated: 2020/11/09 21:53:51 by seko             ###   ########.fr       */
+/*   Updated: 2020/11/09 23:02:18 by seko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,21 @@ void	ft_putchar(char c, int fd)
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n < 0)
+	long long	num;
+
+	num = n;
+	if (num < 0)
 	{
-		n *= -1;
+		num *= -1;
 		ft_putchar('-', fd);
 	}
-	if (n < 10)
+	if (num < 10)
 	{
-		ft_putchar('0' + n, fd);
+		ft_putchar('0' + num, fd);
 	}
 	else
 	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putchar('0' + (n % 10), fd);
+		ft_putnbr_fd(num / 10, fd);
+		ft_putchar('0' + (num % 10), fd);
 	}
 }
