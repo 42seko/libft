@@ -6,20 +6,20 @@
 /*   By: seko <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:12:35 by seko              #+#    #+#             */
-/*   Updated: 2020/11/04 20:13:40 by seko             ###   ########.fr       */
+/*   Updated: 2020/11/09 22:55:07 by seko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			check_len(int n)
+int			check_len(long long num)
 {
 	size_t	len;
 
 	len = 1;
-	while (n >= 10 || n <= -10)
+	while (num >= 10 || num <= -10)
 	{
-		n = n / 10;
+		num = num / 10;
 		len++;
 	}
 	return (len);
@@ -27,27 +27,27 @@ int			check_len(int n)
 
 char		*ft_itoa(int n)
 {
-	char	*temp;
-	char	*zero;
-	size_t	len;
+	char		*temp;
+	size_t		len;
+	long long	num;
 
-	len = check_len(n);
-	zero = "0";
+	num = n;
+	len = check_len(num);
 	if (!(temp = (char *)malloc(sizeof(char) * (len + 1))))
 		return (0);
-	temp[len + 1] = '\0';
-	if (n == 0)
-		return (zero);
-	while (n != 0)
+	if (num == 0)
+		temp[0] = '0';
+	temp[len] = '\0';
+	while (num != 0)
 	{
-		if (n < 0)
+		if (num < 0)
 		{
 			temp[0] = '-';
 			len++;
-			n = n * -1;
+			num = num * -1;
 		}
-		temp[len - 1] = n % 10 + '0';
-		n = n / 10;
+		temp[len - 1] = num % 10 + '0';
+		num = num / 10;
 		len--;
 	}
 	return (temp);
