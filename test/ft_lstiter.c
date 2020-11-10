@@ -6,7 +6,7 @@
 /*   By: seko <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:21:07 by seko              #+#    #+#             */
-/*   Updated: 2020/11/04 20:21:09 by seko             ###   ########.fr       */
+/*   Updated: 2020/11/11 04:49:06 by seko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	if (lst == NULL || f == NULL)
 		return ;
-	while (lst->next != '\0')
+	while (lst)
 	{
 		f(lst->content);
 		lst = lst->next;

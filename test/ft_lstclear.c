@@ -6,7 +6,7 @@
 /*   By: seko <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:20:47 by seko              #+#    #+#             */
-/*   Updated: 2020/11/04 20:20:51 by seko             ###   ########.fr       */
+/*   Updated: 2020/11/11 04:47:54 by seko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 
 	if (lst == NULL || del == NULL)
 		return ;
-	while (lst)
+	while (*lst)
 	{
 		temp = (*lst)->next;
 		ft_lstdelone(*lst, del);
