@@ -26,12 +26,8 @@ int	ft_atoi(const char *str)
 	if ((*p == '-') || (*p == '+'))
 		if ((*(p + 1) == '-') || (*(p + 1) == '+'))
 			return (0);
-	while (*p == '-' || *p == '+')
-	{
-		if (*p == '-')
-			sign *= -1;
-		p++;
-	}
+	if (*p == '-')
+		`sign *= -1;
 	while (*p >= '0' && *p <= '9')
 	{
 		if (num > 2147483647 && sign == 1)
