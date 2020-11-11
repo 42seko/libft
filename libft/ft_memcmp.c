@@ -23,12 +23,8 @@ int	ft_memcmp(const void *ptr1, const void *ptr2, size_t num)
 	i = 0;
 	while (i < num)
 	{
-		if (*p_ptr1 > *p_ptr2)
-			return (1);
-		else if (*p_ptr1 < *p_ptr2)
-			return (-1);
-		p_ptr1++;
-		p_ptr2++;
+		if (*p_ptr1 != *p_ptr2)
+			return (*p_ptr1 - *p_ptr2);
 		i++;
 	}
 	return (0);
