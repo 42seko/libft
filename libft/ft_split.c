@@ -6,7 +6,7 @@
 /*   By: seko <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:06:08 by seko              #+#    #+#             */
-/*   Updated: 2020/11/10 00:44:11 by seko             ###   ########.fr       */
+/*   Updated: 2020/11/13 00:49:21 by seko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,28 +61,12 @@ char		**all_free(char **temp, int malloc_len)
 	return (NULL);
 }
 
-char		*ft_strcpy(char *dest, char const *src, int len)
-{
-	int	i;
-
-	i = 0;
-	if (src[i] == '\0')
-		return (0);
-	while (i < len - 1)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
-}
-
 char		**ft_split(char const *s, char c)
 {
 	char	**temp;
 	int		wrdnum;
-	int		i;
-	int		t_i;
+	unsigned int		i;
+	unsigned int		t_i;
 
 	i = 0;
 	t_i = 0;
@@ -93,10 +77,12 @@ char		**ft_split(char const *s, char c)
 	{
 		while (s[i] == c)
 			i++;
+		if (s[i] == '\0')
+			break ;
 		if (!(temp[t_i] =
 					(char *)malloc(sizeof(char) * (check_size(s, c, i) + 1))))
 			return (all_free(temp, wrdnum + 1));
-		temp[t_i] = ft_strcpy(temp[t_i], s + i, check_size(s, c, i) + 1);
+		ft_strlcpy(temp[t_i], ((char *)s + i), check_size(s, c, i) + 1);
 		while (s[i] && s[i] != c)
 			i++;
 		t_i++;

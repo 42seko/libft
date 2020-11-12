@@ -6,7 +6,7 @@
 /*   By: seko <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:12:35 by seko              #+#    #+#             */
-/*   Updated: 2020/11/10 00:01:59 by seko             ###   ########.fr       */
+/*   Updated: 2020/11/12 21:51:52 by seko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char		*ft_itoa(int n)
 
 	num = n;
 	len = check_len(num);
-	if (!(temp = (char *)malloc(sizeof(char) * (len))))
+	if (!(temp = (char *)malloc(sizeof(char) * (len + 1))))
 		return (0);
 	if (num < 0)
 	{

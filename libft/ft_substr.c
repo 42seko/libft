@@ -6,7 +6,7 @@
 /*   By: seko <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 19:54:37 by seko              #+#    #+#             */
-/*   Updated: 2020/11/04 19:54:48 by seko             ###   ########.fr       */
+/*   Updated: 2020/11/12 20:12:05 by seko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (0);
 	i = start;
 	j = 0;
+	if (!s)
+		return (0);
+	if (ft_strlen(s) < start)
+		return (ft_strdup(""));
 	while (i < len + start)
 	{
 		temp[j] = s[i];

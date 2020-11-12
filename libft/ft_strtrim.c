@@ -6,7 +6,7 @@
 /*   By: seko <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 19:58:38 by seko              #+#    #+#             */
-/*   Updated: 2020/11/11 12:32:27 by seko             ###   ########.fr       */
+/*   Updated: 2020/11/12 20:52:02 by seko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		check_end(char const *s1, char const *set)
 
 	i = ft_strlen(s1) - 1;
 	j = 0;
-	while (i >= 0)
+	while (i > 0)
 	{
 		while (set[j] != '\0')
 		{
@@ -73,7 +73,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = check_end(s1, set);
 	if (end <= front)
 		return (ft_strdup(""));
-	if (!(temp = (char *)malloc(sizeof(char *) * (end - front + 2))))
+	if (!(temp = (char *)malloc(sizeof(char) * (end - front + 2))))
 		return (0);
 	j = front;
 	while (j <= end)
