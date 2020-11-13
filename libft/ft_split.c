@@ -6,7 +6,7 @@
 /*   By: seko <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 20:06:08 by seko              #+#    #+#             */
-/*   Updated: 2020/11/13 00:49:21 by seko             ###   ########.fr       */
+/*   Updated: 2020/11/14 05:15:28 by seko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,18 @@ char		**all_free(char **temp, int malloc_len)
 		i++;
 	}
 	free(temp);
-	return (NULL);
+	return (0);
 }
 
 char		**ft_split(char const *s, char c)
 {
-	char	**temp;
-	int		wrdnum;
+	char				**temp;
 	unsigned int		i;
 	unsigned int		t_i;
 
 	i = 0;
 	t_i = 0;
-	wrdnum = str_num(s, c);
-	if (!s || !(temp = (char **)malloc(sizeof(char *) * (wrdnum + 1))))
+	if (!s || !(temp = (char **)malloc(sizeof(char *) * (str_num(s, c) + 1))))
 		return (NULL);
 	while (s[i])
 	{
@@ -81,7 +79,7 @@ char		**ft_split(char const *s, char c)
 			break ;
 		if (!(temp[t_i] =
 					(char *)malloc(sizeof(char) * (check_size(s, c, i) + 1))))
-			return (all_free(temp, wrdnum + 1));
+			return (all_free(temp, str_num(s, c) + 1));
 		ft_strlcpy(temp[t_i], ((char *)s + i), check_size(s, c, i) + 1);
 		while (s[i] && s[i] != c)
 			i++;
