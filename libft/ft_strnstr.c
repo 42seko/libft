@@ -6,7 +6,7 @@
 /*   By: seko <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 21:25:54 by seko              #+#    #+#             */
-/*   Updated: 2020/11/06 22:11:04 by seko             ###   ########.fr       */
+/*   Updated: 2020/11/16 21:43:27 by seko             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		return ((char *)big);
 	if (len == 0)
 		return (0);
+	if (len > ft_strlen(big))
+		len = ft_strlen(big);
 	while (i < len)
 	{
 		if (big[i] == little[0])
